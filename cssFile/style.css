@@ -1,0 +1,36 @@
+body{
+    background-color: lightskyblue;
+}
+
+.main{
+    text-align: center;
+    margin-top: 10%;
+
+}
+
+#question{
+    border: 2px solid gray;
+    width: 500px;
+    height: auto;
+    margin: 10% 10% 10% 10%;
+}
+
+#question img{
+    width: 50%;
+}
+
+#questionChoices{
+    float: right;
+    margin-top: 10%;
+    margin-right: 20%;
+}
+button{
+    border-radius: 5pt;
+}
+.choices{
+    border: 1px solid black;
+    border-radius: 5pt;
+    padding: 5pt;
+    margin-bottom: 10pt;
+    
+}
