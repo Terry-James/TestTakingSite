@@ -2,35 +2,47 @@ body{
     background-color: lightskyblue;
 }
 
-.main{
+#main{
     text-align: center;
     margin-top: 10%;
+    margin-left: 25%;
 
+}
+
+#QA{
+    margin-left: 5%;
 }
 
 #question{
     border: 2px solid gray;
-    width: 500px;
-    height: auto;
-    margin: 10% 10% 10% 10%;
+    width: 350px;
+    height: 200px;
+    float: left;
 }
 
-#question img{
-    width: 50%;
+#answers{
+    float: left;
+    width: 400px;
+    height: 200px;
+    border: 2px solid gray;
 }
 
-#questionChoices{
-    float: right;
-    margin-top: 10%;
-    margin-right: 20%;
+#nav{
+    clear: both;
+    padding: 10px;
+    /*border: 2px solid gray;*/
+    width: 900px;
+    height: 50px;
 }
-button{
-    border-radius: 5pt;
+
+#nav button, h4{
+    display: block;
+    margin-left: 5px;
+    float: left;
+    width: 100px;
+    border-radius: 5px;
+    height: 50px;
+    text-align: center;
 }
-.choices{
-    border: 1px solid black;
-    border-radius: 5pt;
-    padding: 5pt;
-    margin-bottom: 10pt;
-    
-}
+
+
