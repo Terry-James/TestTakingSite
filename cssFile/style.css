@@ -1,7 +1,13 @@
 body{
     background-color: lightskyblue;
 }
-
+#opener{
+    text-align: center;
+    width: 800px;
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
 .main{
     text-align: center;
     width: 800px;
