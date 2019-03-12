@@ -1,26 +1,60 @@
 <!doctype <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Test Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="cssFile/style.css" />
-    <script src="/javascript/myScript.js"></script>
+    <script src="javascript/myScript.js"></script>
 </head>
-<body>
-    <a href="index.html">move back to index</a>
 
-    <div id="question">
-        <img src="images/mainImage.jpg">
-        <ul id="questionChoices">
-            <li class="choices"><button> Answer 1</button></li>
-            <li class="choices"><button> Answer 2</button></li>
-            <li class="choices"><button> Answer 3</button></li>
-            <li class="choices"><button> Answer 4</button></li>
+<body>
+    <div id="mainNav">
+        <ul>
+            <li><button id="home">Return Home</button></li>
+            <li><button id="adding">Add a question</button></li>
+            <li><button id="delete">Delete a question</button></li>
+            <li><button id="delete">Update questions</button></li>
         </ul>
     </div>
-    <div id="answers"></div>
-    <div id="submit">Submit Quiz</div>
+    <div class="main">
+        <div id="progress">
+
+        </div>
+        <div id="question">
+
+        </div>
+        <div id="answers">
+
+        </div>
+        <div id="nav">
+            <button id="homeButton">
+                <h5>Home Page</h5>
+            </button>
+            <button id="first">
+                <h5>First Question</h5>
+            </button>
+            <button id="leftArrow">
+                <h5>Previous</h5>
+            </button>
+            <h4 id="questNum">1</h4>
+            <button id="rightArrow">
+                <h5>Next Question</h5>
+            </button>
+            <button id="last">
+                <h5>Last Question</h5>
+            </button>
+            <button id="skip">
+                <h5>Skip</h5>
+            </button>
+            <button id="questionSubmit">
+                <h5>Submit</h5>
+            </button>
+        </div>
+        <div id="submit">Submit Quiz</div>
+    </div>
 </body>
+
 </html>
