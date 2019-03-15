@@ -5,28 +5,31 @@ body{
     text-align: center;
     width: 800px;
     margin-top: 10%;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .main{
     text-align: center;
-    width: 800px;
+    width: 700px;
     margin-top: 10%;
     margin-left: 25%;
     margin-right: 25%;
 }
 
-
 #question{
     float: left;
     border: 2px solid black;
-    width: 350px;
+    width: 300px;
     height: 200px;
+}
+
+#question h2{
+    margin: 75px 10px 10px 10px;
 }
 
 #answers{
     float: right;
-    width: 400px;
+    width: 350px;
     height: 200px;
     border: 2px solid black;
 }
@@ -85,6 +88,13 @@ background-color: yellow;
     border-radius: 5px;
     margin-right: 40%
 }
+
+#multiChoice h2, input{
+    float: left;
+    margin-left: 100px;
+    margin-right: 10px;
+}
+
 
 
 
