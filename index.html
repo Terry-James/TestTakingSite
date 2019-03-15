@@ -1,6 +1,5 @@
-<!doctype <!DOCTYPE html>
+<!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="cssFile/style.css" />
     <script src="javascript/myScript.js"></script>
 </head>
-
 <body>
     <div id="opener">
         <h1>Welcome to Test Taker</h1>
@@ -40,15 +38,16 @@
             </div>
             <div id="answers">
                 <div id="multipleChoice">
-                    <form>
-                        <input type="radio">
+                    <form onsubmit="submitAnswer()" target="_self">
+                        <input type="radio" name="choice1">
                         <h2 class="mChoices"></h2>
-                        <input type="radio">
+                        <input type="radio" name="choice2">
                         <h2 class="mChoices"></h2>
-                        <input type="radio">
+                        <input type="radio" name="choice3">
                         <h2 class="mChoices"></h2>
-                        <input type="radio">
+                        <input type="radio" name="choice4">
                         <h2 class="mChoices"></h2>
+                        <input type="submit">Submit Question</button>
                     </form>
                 </div>
                 <div id="multiAnswers">

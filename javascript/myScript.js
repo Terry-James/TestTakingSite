@@ -134,6 +134,17 @@ function buildQuiz() {
     }
 }
 
+function submitAnswer(){
+    var index = 0;
+    var formResults = document.getElementById('multipleChoice').getElementsByTagName('input');
+    var valueResults = document.getElementById('multipleChoice').getElementsByTagName('h2');
+    for(let i = 0; i < formResults.length; i++){
+        if(formResults[i].checked == true)
+            index = i;
+    }
+    alert(valueResults[index].innerHTML);
+}
+
 function randomizeQuiz() {
 
 }
@@ -177,13 +188,13 @@ function showNextQuestion() {
         hideElements();
         var multiAnswer = document.getElementsByClassName('mAnswer');
         document.getElementById('multiAnswers').style.display = "block";
-        multiAnswer[index].innerHTML = allQuestions[index].choice1;
+        multiAnswer[index].innerHTML = allQuestions[counter].choice1;
         index++;
-        multiAnswer[index].innerHTML = allQuestions[index].choice2;
+        multiAnswer[index].innerHTML = allQuestions[counter].choice2;
         index++;
-        multiAnswer[index].innerHTML = allQuestions[index].choice3;
+        multiAnswer[index].innerHTML = allQuestions[counter].choice3;
         index++;
-        multiAnswer[index].innerHTML = allQuestions[index].choice4;
+        multiAnswer[index].innerHTML = allQuestions[counter].choice4;
         index++;
         document.getElementById('multiAnwsers').style.display = "block";
     }
