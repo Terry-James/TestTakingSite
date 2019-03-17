@@ -1,25 +1,156 @@
-<!doctype <!DOCTYPE html>
+<!doctype html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Main Page</title>
+    <title>Admin Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="cssFile/style.css" />
     <script src="javascript/myScript.js"></script>
 </head>
-
 <body>
-    <div class="main">
+    <div id="opener">
         <h1>Welcome to Test Taker</h1>
         <h2>Please select who you are:</h2>
-        <form action="admin.html">
-            <button type="submit">Admin</button>
-        </form>
-        <form action="testPage.html">
-            <button type="submit">Tester</button>
-        </form>
+        <button id="adminButton" type="submit">Admin</button>
+        <button id="testTaker" type="submit">Tester</button>
+    </div>
+    <div id="adminNav">
+        <ul>
+            <li><button class="home">Return Home</button></li>
+            <li><button id="adding">Add a question</button></li>
+            <li><button id="delete">Delete a question</button></li>
+            <li><button id="update">Update questions</button></li>
+        </ul>
+    </div>
+    <div id="testNav">
+        <ul>
+            <li><button class="home">Return Home</button></li>
+            <li><button id="takeTest">Take Test </button></li>
+            <li><button id="delete">View Results</button></li>
+        </ul>
+    </div>
+    <div class="main">
+        <div id="testingDiv">
+            <div id="progress"></div>
+            <div id="question">
+                <h2></h2>
+            </div>
+            <div id="answers">
+                <div id="multipleChoice">
+                    <form onsubmit="submitAnswer()" target="_self">
+                        <input type="radio" name="choice1">
+                        <h2 class="mChoices"></h2>
+                        <input type="radio" name="choice2">
+                        <h2 class="mChoices"></h2>
+                        <input type="radio" name="choice3">
+                        <h2 class="mChoices"></h2>
+                        <input type="radio" name="choice4">
+                        <h2 class="mChoices"></h2>
+                        <input type="submit">Submit Question</button>
+                    </form>
+                </div>
+                <div id="multiAnswers">
+                    <form>
+                        <input type="checkbox">
+                        <h2 class="mAnswer"></h2>
+                        <input type="checkbox">
+                        <h2 class="mAnswer"></h2>
+                        <input type="checkbox">
+                        <h2 class="mAnswer"></h2>
+                        <input type="checkbox">
+                        <h2 class="mAnswer"></h2>
+                    </form>
+                </div>
+            </div>
+            <div id="nav">
+                <button id="first">
+                    <h5>First Question</h5>
+                </button>
+                <button id="leftArrow">
+                    <h5>Previous</h5>
+                </button>
+                <h4 id="questNum">1</h4>
+                <button id="rightArrow">
+                    <h5>Next Question</h5>
+                </button>
+                <button id="last">
+                    <h5>Last Question</h5>
+                </button>
+                <button id="skip">
+                    <h5>Skip</h5>
+                </button>
+                <button id="questionSubmit">
+                    <h5>Submit</h5>
+                </button>
+            </div>
+            <div id="submit">Submit Quiz</div>
+        </div>
+        <div id="selection">
+            <h2>What type of question do you want to add?</h2>
+            <button id="multiButton">Select</button>
+            <h3>MultiChoice</h3>
+            <button id="answerButton">Select</button>
+            <h3>MultiAnswer</h3>
+            <button id="trueButton">Select</button>
+            <h3>True/False</h3>
+            <button id="fillButton">Select</button>
+            <h3>Fill in the blank</h3>
+            <button id="shortButton">Select</button>
+            <h3>Short answer</h3>
+        </div>
+
+        <div id="multi">
+            <form>
+                <h3>Enter question:</h3>
+                <input type="text"><br>
+                <h3>Enter answer choices:</h3>
+                <input type="radio">
+                <input type="text">
+                <input type="radio">
+                <input type="text">
+                <input type="radio">
+                <input type="text">
+                <input type="radio">
+                <input type="text">
+            </form>
+        </div>
+
+        <div id="multAns">
+            <form>
+                <h3>Enter question:</h3>
+                <input type="text"><br>
+                <h3>Enter answer choices:</h3>
+                <input type="checkbox">
+                <input type="text">
+                <input type="checkbox">
+                <input type="text">
+                <input type="checkbox">
+                <input type="text">
+                <input type="checkbox">
+                <input type="text">
+            </form>
+        </div>
+
+        <div id="trueOrFalse">
+            <form>
+                <h3>Enter question:</h3>
+                <input type="text"><br>
+                <h3>The choices are:</h3>
+                <input type="checkbox">
+                <h2>True</h2>
+                <input type="checkbox">
+                <h2>False</h2>
+            </form>
+        </div>
+
+        <div id="fillBlank">
+            working
+        </div>
+
+        <div id="shortAnswer">
+            working
+        </div>
     </div>
 </body>
 
