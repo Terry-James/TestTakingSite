@@ -51,15 +51,25 @@
                     </form>
                 </div>
                 <div id="multiAnswers">
-                    <form>
-                        <input type="checkbox">
+                    <form onsubmit="submitAnswer()" target="_self">
+                        <input type="checkbox" name="maChoice1">
+                        <h2 class="mAnswer"></h2>
+                        <input type="checkbox" name="maChoice2">
                         <h2 class="mAnswer"></h2>
                         <input type="checkbox">
-                        <h2 class="mAnswer"></h2>
+                        <h2 class="mAnswer" name="maChoice3"></h2>
                         <input type="checkbox">
-                        <h2 class="mAnswer"></h2>
-                        <input type="checkbox">
-                        <h2 class="mAnswer"></h2>
+                        <h2 class="mAnswer" name="maChoice4"></h2>
+                        <input type="submit">Submit Question</button>
+                    </form>
+                </div>
+                <div id="tF">
+                    <form onsubmit="submitAnswer()" target="_self">
+                        <input type="radio" name="tFChoice1">
+                        <h2 class="tFAnswer">True</h2>
+                        <input type="radio" name="tFChoice2">
+                        <h2 class="tFAnswer">False</h2>
+                        <input type="submit">Submit Question</button>
                     </form>
                 </div>
             </div>
@@ -70,7 +80,7 @@
                 <button id="leftArrow">
                     <h5>Previous</h5>
                 </button>
-                <h4 id="questNum">1</h4>
+                <h4 id="questNum"></h4>
                 <button id="rightArrow">
                     <h5>Next Question</h5>
                 </button>
