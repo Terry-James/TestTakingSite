@@ -19,6 +19,7 @@ body{
 #question{
     float: left;
     border: 2px solid black;
+    border-radius: 5px;
     width: 300px;
     height: 250px;
 }
@@ -32,6 +33,7 @@ body{
     width: 350px;
     height: 250px;
     border: 2px solid black;
+    border-radius: 5px;
 }
 
 #nav{
@@ -44,6 +46,7 @@ body{
 
 #nav button, h4{
     display: block;
+    border-radius: 5px;
     margin-left: 5px;
     float: left;
     width: 100px;
@@ -61,15 +64,16 @@ ul {
 }
 
 li button{
-float: left;
-color: black;
-margin-right: 5px;
-text-align: center;
-text-decoration: none;
+    float: left;
+    color: black;
+    margin-right: 5px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
 }
 
 li button:hover {
-background-color: yellow;
+    background-color: yellow;
 }
 
 #selection{
@@ -86,12 +90,17 @@ background-color: yellow;
 #multi, #multAns, #trueOrFalse, #fillBlank, #shortAnswer{
     border: 2px solid black;
     border-radius: 5px;
-    margin-right: 40%
+    margin-right: 40%;
+    height: auto;
 }
 
-#multiChoice h2, input{
+#multiChoice h2 input{
     float: left;
     margin-left: 100px;
     margin-right: 10px;
+}
+
+#testingDiv input{
+    float: left;
 }
 
