@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="cssFile/style.css" />
     <script src="javascript/myScript.js"></script>
 </head>
+
 <body>
     <div id="opener">
         <h1>Welcome to Test Taker</h1>
@@ -38,39 +40,33 @@
             </div>
             <div id="answers">
                 <div id="multipleChoice">
-                    <form onsubmit="submitAnswer()" target="_self">
-                        <input type="radio" name="choice1">
-                        <h2 class="mChoices"></h2>
-                        <input type="radio" name="choice2">
-                        <h2 class="mChoices"></h2>
-                        <input type="radio" name="choice3">
-                        <h2 class="mChoices"></h2>
-                        <input type="radio" name="choice4">
-                        <h2 class="mChoices"></h2>
-                        <input type="submit">Submit Question</button>
-                    </form>
+                    <input type="radio" name="choice1">
+                    <h2 class="mChoices"></h2>
+                    <input type="radio" name="choice2">
+                    <h2 class="mChoices"></h2>
+                    <input type="radio" name="choice3">
+                    <h2 class="mChoices"></h2>
+                    <input type="radio" name="choice4">
+                    <h2 class="mChoices"></h2>
+                    <button id="mcButton">Submit Question</button>
                 </div>
                 <div id="multiAnswers">
-                    <form onsubmit="submitAnswer()" target="_self">
-                        <input type="checkbox" name="maChoice1">
-                        <h2 class="mAnswer"></h2>
-                        <input type="checkbox" name="maChoice2">
-                        <h2 class="mAnswer"></h2>
-                        <input type="checkbox">
-                        <h2 class="mAnswer" name="maChoice3"></h2>
-                        <input type="checkbox">
-                        <h2 class="mAnswer" name="maChoice4"></h2>
-                        <input type="submit">Submit Question</button>
-                    </form>
+                    <input type="checkbox" name="maChoice1">
+                    <h2 class="mAnswer"></h2>
+                    <input type="checkbox" name="maChoice2">
+                    <h2 class="mAnswer"></h2>
+                    <input type="checkbox">
+                    <h2 class="mAnswer" name="maChoice3"></h2>
+                    <input type="checkbox">
+                    <h2 class="mAnswer" name="maChoice4"></h2>
+                    <button id="maButton">Submit Question</button>
                 </div>
                 <div id="tF">
-                    <form onsubmit="submitAnswer()" target="_self">
                         <input type="radio" name="tFChoice1">
                         <h2 class="tFAnswer">True</h2>
                         <input type="radio" name="tFChoice2">
                         <h2 class="tFAnswer">False</h2>
-                        <input type="submit">Submit Question</button>
-                    </form>
+                        <button id="tfButton">Submit Question</button>
                 </div>
             </div>
             <div id="nav">
@@ -94,7 +90,6 @@
                     <h5>Submit</h5>
                 </button>
             </div>
-            <div id="submit">Submit Quiz</div>
         </div>
         <div id="selection">
             <h2>What type of question do you want to add?</h2>

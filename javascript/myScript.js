@@ -3,6 +3,10 @@
 window.onload = function () {
     hideElements();
     hideAnswers();
+    document.getElementById('mcButton').onclick = submitAnswer;
+    document.getElementById('maButton').onclick = submitAnswer;
+    document.getElementById('tfButton').onclick = submitAnswer;
+
     document.getElementById('adding').onclick = addQuestion;
     document.getElementById("multiButton").onclick = addingMultiChoice;
     document.getElementById("answerButton").onclick = addingMultiAnswer;
@@ -29,13 +33,10 @@ var allQuestions = [{
     choice4: "fence", questAnswer: "green"
 }, {
     question: "Which lives in the ocean?", type: 2,
-    choice1: "fish", choice2: "frog", choice3: "cat", choice4: "dog", questAnswer: ("fish", "frog")
+    choice1: "fish", choice2: "frog", choice3: "cat", choice4: "dog", questAnswer: ["fish", "frog"]
 },
 { question: "Is the sky blue?", type: 3, choice1: "True", choice2: "False", questAnswer: "True" }];
 
-for (let i = 0; i < allQuestions.length; i++) {
-    console.log(allQuestions[0].question1);
-}
 
 var userAnswers = [];
 var answerStatus = []; // (boolean array) should be the size of allQuestion array
@@ -43,6 +44,9 @@ var counter = 0;
 var correct = 0;
 var incorrect = 0;
 var questionNum = 1;
+var index = 0;
+var instanceIndex = 0;
+
 
 function testLayout() {
     document.getElementById('opener').style.display = "none";
@@ -125,10 +129,10 @@ function hideAnswers() {
 
 function buildQuiz() {
     var question = document.getElementById('question').getElementsByTagName('h2');
+    document.getElementById('questNum').innerHTML = questionNum;
     var multiChoice = document.getElementsByClassName('mChoices');
     question[0].innerHTML = allQuestions[counter].question;
     if (allQuestions[counter].type == 1) {
-        var index = 0;
         document.getElementById('multipleChoice').style.display = "block";
         multiChoice[index].innerHTML = allQuestions[counter].choice1;
         index++;
@@ -137,33 +141,71 @@ function buildQuiz() {
         multiChoice[index].innerHTML = allQuestions[counter].choice3;
         index++;
         multiChoice[index].innerHTML = allQuestions[counter].choice4;
-        index++;
     }
 }
 
 function submitAnswer() {
-    var index = 0;
-    var formResults = document.getElementById('multipleChoice').getElementsByTagName('input');
-    var valueResults = document.getElementById('multipleChoice').getElementsByTagName('h2');
-    for (let i = 0; i < formResults.length; i++) {
-        if (formResults[i].checked == true)
-            index = i;
+    var questionType;
+    questionType = allQuestions[counter].type;
+    var indexArray = [];
+    var correctIndex = 0;
+    var trueIndex = 0;
+    if (questionType == 1) {
+        var formResults = document.getElementById('multipleChoice').getElementsByTagName('input');
+        var valueResults = document.getElementById('multipleChoice').getElementsByTagName('h2');
+        for (let i = 0; i < formResults.length; i++) {
+            if (formResults[i].checked == true)
+                correctIndex = i;
+        }
+        userAnswers[userAnswers.length] = valueResults[correctIndex].innerHTML;
+        showInstanceFeedback(valueResults[correctIndex].innerHTML, questionType);
+        showNextQuestion();
     }
-    userAnswers[userAnswers.length] = valueResults[index].innerHTML;
-    showInstanceFeedback(valueResults[index].innerHTML);
-    alert(valueResults[index].innerHTML);
+    else if (questionType == 2) {
+        var formResults = document.getElementById('multiAnswers').getElementsByTagName('input');
+        var valueResults = document.getElementById('multiAnswers').getElementsByTagName('h2');
+        for (let i = 0; i < formResults.length; i++) {
+            if (formResults[i].checked == true) {
+                indexArray[trueIndex] = i;
+                trueIndex++;
+            }
+        }
+        for (let i = 0; i < indexArray.length; i++) {
+            userAnswers[userAnswers.length] = valueResults[indexArray[i]].innerHTML;
+            showInstanceFeedback(valueResults[indexArray[i]].innerHTML, questionType);
+        }
+        showNextQuestion();
+    }
+    else if (questionType == 3) {
+
+    }
 }
 
 function randomizeQuiz() {
 
 }
 
-function showInstanceFeedback(results) {
-    if (allQuestions[counter].questAnswer == results) {
-        alert("Correct");
+function showInstanceFeedback(results, type) {
+    if (type == 1) {
+        if (allQuestions[counter].questAnswer == results) {
+            correct++;
+            alert("correct");
+        }
+        else {
+            incorrect++;
+            alert("incorrect");
+        }
     }
-    else {
-        alert("Wrong Answer");
+    else if (type == 2) {
+        if (allQuestions[counter].questAnswer[instanceIndex] == results) {
+            correct++;
+            instanceIndex++;
+            alert("correct");
+        }
+        else {
+            incorrect++;
+            alert("incorrect");
+        }
     }
 }
 
@@ -172,21 +214,43 @@ function showAllResults() {
 }
 
 function showFirstQuestion() {
+    questionNum = 1;
+    index = 0;
+    counter = 0;
+    hideAnswers();
+    document.getElementById('questNum').innerHTML = questionNum;
     var question = document.getElementById('question').getElementsByTagName('h2');
     question[0].innerHTML = allQuestions[0].question;
+    var multiChoice = document.getElementsByClassName('mChoices');
+    question[0].innerHTML = allQuestions[counter].question;
+    document.getElementById('multipleChoice').style.display = "block";
+    multiChoice[index].innerHTML = allQuestions[counter].choice1;
+    index++;
+    multiChoice[index].innerHTML = allQuestions[counter].choice2;
+    index++;
+    multiChoice[index].innerHTML = allQuestions[counter].choice3;
+    index++;
+    multiChoice[index].innerHTML = allQuestions[counter].choice4;
+
 }
 
 function showLastQuestion() {
+    questionNum = allQuestions.length;
+    hideAnswers();
+    document.getElementById('questNum').innerHTML = questionNum;
     var question = document.getElementById('question').getElementsByTagName('h2');
     question[0].innerHTML = allQuestions[allQuestions.length - 1].question;
+    document.getElementById('tF').style.display = "block";
 }
 
 function showNextQuestion() {
+    questionNum++;
     counter++;
     hideAnswers();
-    var index = 0;
+    index = 0;
     var question = document.getElementById('question').getElementsByTagName('h2');
     question[0].innerHTML = allQuestions[counter].question;
+    document.getElementById('questNum').innerHTML = questionNum;
 
     if (allQuestions[counter].type == 2) {
         var multiAnswer = document.getElementsByClassName('mAnswer');
@@ -205,11 +269,13 @@ function showNextQuestion() {
 }
 
 function showPreviousQuestion() {
+    questionNum--;
     counter--;
     hideAnswers();
+    document.getElementById('questNum').innerHTML = questionNum;
     var question = document.getElementById('question').getElementsByTagName('h2');
     question[0].innerHTML = allQuestions[counter].question;
-    if(allQuestions[counter].type == 1){
+    if (allQuestions[counter].type == 1) {
         var multipleChoice = document.getElementsByClassName('mChoices');
         document.getElementById('multipleChoice').style.display = "block";
         multipleChoice[index].innerHTML = allQuestions[counter].choice1;
@@ -220,6 +286,18 @@ function showPreviousQuestion() {
         index++;
         multipleChoice[index].innerHTML = allQuestions[counter].choice4;
     }
+    else if (allQuestions[counter].type == 2) {
+        var multiAnswer = document.getElementsByClassName('mAnswer');
+        document.getElementById('multiAnswers').style.display = "block";
+        multiAnswer[index].innerHTML = allQuestions[counter].choice1;
+        index++;
+        multiAnswer[index].innerHTML = allQuestions[counter].choice2;
+        index++;
+        multiAnswer[index].innerHTML = allQuestions[counter].choice3;
+        index++;
+        multiAnswer[index].innerHTML = allQuestions[counter].choice4;
+    }
+
 }
 
 function showStatusBar() {
