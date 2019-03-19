@@ -188,13 +188,16 @@ function randomizeQuiz() {
 }
 
 function showInstanceFeedback(results, type) {
+    var instResult = document.getElementById('progress').getElementsByTagName('li');
     if (type == 1) {
         if (allQuestions[counter].questAnswer == results) {
             correct++;
+            instResult[1].innerHTML = correct;
             alert("correct");
         }
         else {
             incorrect++;
+            instResult[3].innerHTML = incorrect;
             alert("incorrect");
         }
     }
@@ -202,20 +205,26 @@ function showInstanceFeedback(results, type) {
         if (allQuestions[counter].questAnswer[instanceIndex] == results) {
             correct++;
             instanceIndex++;
+            instResult[1].innerHTML = correct;
             alert("correct");
         }
         else {
             incorrect++;
+            instResult[3].innerHTML = incorrect;
             alert("incorrect");
         }
     }
 }
 
 function showAllResults() {
+<<<<<<< HEAD
     document.getElementById('finalResults').style.display = "block";
     var displayTags = document.getElementById('finalResults').getElementsByTagName('h3');
     displayTags[0].innerHTML = correct;
     displayTags[1].innerHTML = incorrect;
+=======
+     
+>>>>>>> 13dcbe7a2d01655b6e6c8f3389b18912540c209e
 }
 
 function showFirstQuestion() {
