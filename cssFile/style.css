@@ -36,6 +36,16 @@ body{
     border-radius: 5px;
 }
 
+#progress ul li{
+    float: left;
+    padding: 10px;
+}
+
+#progress{
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
 #nav{
     clear: both;
     padding: 10px;
