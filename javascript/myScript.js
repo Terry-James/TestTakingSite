@@ -20,6 +20,7 @@ window.onload = function () {
     document.getElementById("leftArrow").onclick = showPreviousQuestion;
     document.getElementById("first").onclick = showFirstQuestion;
     document.getElementById("last").onclick = showLastQuestion;
+    document.getElementById("quizSubmit").onclick = showAllResults;
     var homePage = document.getElementsByClassName('home');
     homePage[0].onclick = returnHome;
     homePage[1].onclick = returnHome;
@@ -109,6 +110,7 @@ function updateQuestion() {
 }
 
 function hideElements() {
+    document.getElementById('finalResults').style.display = "none";
     document.getElementById('testNav').style.display = "none";
     document.getElementById('testingDiv').style.display = "none";
     document.getElementById('adminNav').style.display = "none";
@@ -210,7 +212,10 @@ function showInstanceFeedback(results, type) {
 }
 
 function showAllResults() {
-
+    document.getElementById('finalResults').style.display = "block";
+    var displayTags = document.getElementById('finalResults').getElementsByTagName('h3');
+    displayTags[0].innerHTML = correct;
+    displayTags[1].innerHTML = incorrect;
 }
 
 function showFirstQuestion() {

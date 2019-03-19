@@ -13,9 +13,13 @@
 <body>
     <div id="opener">
         <h1>Welcome to Test Taker</h1>
-        <h2>Please select who you are:</h2>
-        <button id="adminButton" type="submit">Admin</button>
-        <button id="testTaker" type="submit">Tester</button>
+        <fieldset>
+            <legend>
+                <h2>Please select who you are</h2>
+            </legend>
+            <button id="adminButton" type="submit">Admin</button>
+            <button id="testTaker" type="submit">Tester</button>
+        </fieldset>
     </div>
     <div id="adminNav">
         <ul>
@@ -62,12 +66,18 @@
                     <button id="maButton">Submit Question</button>
                 </div>
                 <div id="tF">
-                        <input type="radio" name="tFChoice1">
-                        <h2 class="tFAnswer">True</h2>
-                        <input type="radio" name="tFChoice2">
-                        <h2 class="tFAnswer">False</h2>
-                        <button id="tfButton">Submit Question</button>
+                    <input type="radio" name="tFChoice1">
+                    <h2 class="tFAnswer">True</h2>
+                    <input type="radio" name="tFChoice2">
+                    <h2 class="tFAnswer">False</h2>
+                    <button id="tfButton">Submit Question</button>
                 </div>
+            </div>
+            <div id="finalResults">
+                <h2>Number you got correct is:</h2>
+                <h3></h3>
+                <h2>Number you got wrong is:</h2>
+                <h3></h3>
             </div>
             <div id="nav">
                 <button id="first">
@@ -86,7 +96,7 @@
                 <button id="skip">
                     <h5>Skip</h5>
                 </button>
-                <button id="questionSubmit">
+                <button id="quizSubmit">
                     <h5>Submit</h5>
                 </button>
             </div>
