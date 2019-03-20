@@ -33,7 +33,6 @@
         <ul>
             <li><button class="home">Return Home</button></li>
             <li><button id="takeTest">Take Test </button></li>
-            <li><button id="delete">View Results</button></li>
         </ul>
     </div>
     <div class="main">
@@ -51,13 +50,13 @@
             </div>
             <div id="answers">
                 <div id="multipleChoice">
-                    <input type="radio" name="choice1">
+                    <input type="radio" name="choice">
                     <h2 class="mChoices"></h2>
-                    <input type="radio" name="choice2">
+                    <input type="radio" name="choice">
                     <h2 class="mChoices"></h2>
-                    <input type="radio" name="choice3">
+                    <input type="radio" name="choice">
                     <h2 class="mChoices"></h2>
-                    <input type="radio" name="choice4">
+                    <input type="radio" name="choice">
                     <h2 class="mChoices"></h2>
                     <button id="mcButton">Submit Question</button>
                 </div>
@@ -73,11 +72,15 @@
                     <button id="maButton">Submit Question</button>
                 </div>
                 <div id="tF">
-                    <input type="radio" name="tFChoice1">
+                    <input type="radio" name="tFChoice">
                     <h2 class="tFAnswer">True</h2>
-                    <input type="radio" name="tFChoice2">
+                    <input type="radio" name="tFChoice">
                     <h2 class="tFAnswer">False</h2>
                     <button id="tfButton">Submit Question</button>
+                </div>
+                <div id="blankAnswer">
+                    <input type="text" name="userTyped" id="userTyped">
+                    <button id="fillBlankButton">Submit Question</button>
                 </div>
             </div>
             <div id="finalResults">
@@ -85,6 +88,8 @@
                 <h3></h3>
                 <h2>Number you got wrong is:</h2>
                 <h3></h3>
+                <h2>Your anwsers where:</h2>
+                <p id="answersGiven"></p>
             </div>
             <div id="nav">
                 <button id="first">
@@ -118,60 +123,53 @@
             <h3>True/False</h3>
             <button id="fillButton">Select</button>
             <h3>Fill in the blank</h3>
-            <button id="shortButton">Select</button>
-            <h3>Short answer</h3>
         </div>
 
         <div id="multi">
-            <form>
-                <h3>Enter question:</h3>
-                <input type="text"><br>
-                <h3>Enter answer choices:</h3>
-                <input type="radio">
-                <input type="text">
-                <input type="radio">
-                <input type="text">
-                <input type="radio">
-                <input type="text">
-                <input type="radio">
-                <input type="text">
-            </form>
+            <h3>Enter question:</h3>
+            <input type="text"><br>
+            <h3>Enter answer choices:</h3>
+            <input type="number" placeholder="question type (1,2,3,4)">
+            <input type="text" placeholder="choice1">
+            <input type="text" placeholder="choice2">
+            <input type="text" placeholder="choice3">
+            <input type="text" placeholder="choice4">
+            <input type="text" placeholder="correct answer">
+            <button type="submit" id="createMultiQuestion">Submit</button>
         </div>
 
         <div id="multAns">
-            <form>
-                <h3>Enter question:</h3>
-                <input type="text"><br>
-                <h3>Enter answer choices:</h3>
-                <input type="checkbox">
-                <input type="text">
-                <input type="checkbox">
-                <input type="text">
-                <input type="checkbox">
-                <input type="text">
-                <input type="checkbox">
-                <input type="text">
-            </form>
+            <h3>Enter question:</h3>
+            <input type="text"><br>
+            <h3>Enter answer choices:</h3>
+            <input type="number" placeholder="question type (1,2,3,4)">
+            <input type="text" placeholder="choice1">
+            <input type="text" placeholder="choice2">
+            <input type="text" placeholder="choice3">
+            <input type="text" placeholder="choice4">
+            <input type="text" placeholder="correct answer">
+            <button type="submit" id="createMultiAnswer">Submit</button>
         </div>
 
         <div id="trueOrFalse">
-            <form>
-                <h3>Enter question:</h3>
-                <input type="text"><br>
-                <h3>The choices are:</h3>
-                <input type="checkbox">
-                <h2>True</h2>
-                <input type="checkbox">
-                <h2>False</h2>
+            <h3>Enter question:</h3>
+            <input type="text"><br>
+            <h3>The choices are:</h3>
+            <input type="number" placeholder="question type (1,2,3,4)">
+            <input type="text" placeholder="correct answer">
+            <h2>True</h2>
+            <h2>False</h2>
+            <button type="submit" id="createTrueFalse">Submit</button>
             </form>
         </div>
 
         <div id="fillBlank">
-            working
-        </div>
-
-        <div id="shortAnswer">
-            working
+            <h3>Enter question:</h3>
+            <input type="text"><br>
+            <h3>The  answer is:</h3>
+            <input type="number" placeholder="question type (1,2,3,4)">
+            <input type="text" placeholder="correct answer">
+            <button type="submit" id="createFillBlank">Submit</button>
         </div>
     </div>
 </body>

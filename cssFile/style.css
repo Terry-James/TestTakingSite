@@ -109,6 +109,7 @@ li button:hover {
     border: 2px solid black;
     border-radius: 5px;
     margin-right: 40%;
+    width: auto;
     height: auto;
 }
 
@@ -122,3 +123,6 @@ li button:hover {
     float: left;
 }
 
+#blankAnswer{
+    margin: 30% 25%;
+}

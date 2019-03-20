@@ -6,13 +6,13 @@ window.onload = function () {
     document.getElementById('mcButton').onclick = submitAnswer;
     document.getElementById('maButton').onclick = submitAnswer;
     document.getElementById('tfButton').onclick = submitAnswer;
+    document.getElementById('fillBlankButton').onclick = submitAnswer;
 
     document.getElementById('adding').onclick = addQuestion;
     document.getElementById("multiButton").onclick = addingMultiChoice;
     document.getElementById("answerButton").onclick = addingMultiAnswer;
     document.getElementById("trueButton").onclick = addingTrueFalse;
     document.getElementById("fillButton").onclick = addingFillBlank;
-    document.getElementById("shortButton").onclick = addingShortAnswer;
     document.getElementById("testTaker").onclick = testLayout;
     document.getElementById("adminButton").onclick = adminLayout;
     document.getElementById("takeTest").onclick = buildQuiz;
@@ -21,6 +21,11 @@ window.onload = function () {
     document.getElementById("first").onclick = showFirstQuestion;
     document.getElementById("last").onclick = showLastQuestion;
     document.getElementById("quizSubmit").onclick = showAllResults;
+    document.getElementById("createMultiQuestion").onclick = addMultipleChoice;
+    document.getElementById("createMultiAnswer").onclick = addMultipleAnswer;
+    document.getElementById("createTrueFalse").onclick = addTrueFalse;
+    document.getElementById("createFillBlank").onclick = addFillBlank;
+
     var homePage = document.getElementsByClassName('home');
     homePage[0].onclick = returnHome;
     homePage[1].onclick = returnHome;
@@ -32,15 +37,16 @@ window.onload = function () {
 var allQuestions = [{
     question: "Which is a color?", type: 1, choice1: "fish", choice2: "green", choice3: "house",
     choice4: "fence", questAnswer: "green"
-}, {
+},
+{
     question: "Which lives in the ocean?", type: 2,
     choice1: "fish", choice2: "frog", choice3: "cat", choice4: "dog", questAnswer: ["fish", "frog"]
 },
-{ question: "Is the sky blue?", type: 3, choice1: "True", choice2: "False", questAnswer: "True" }];
+{ question: "Is the sky blue?", type: 3, choice1: "True", choice2: "False", questAnswer: "True" },
+{ question: "How many days in a year?", type: 4, questAnswer: 365 }];
 
 
 var userAnswers = [];
-var answerStatus = []; // (boolean array) should be the size of allQuestion array
 var counter = 0;
 var correct = 0;
 var incorrect = 0;
@@ -71,7 +77,6 @@ function addQuestion() {
     document.getElementById('multAns').style.display = "none";
     document.getElementById('trueOrFalse').style.display = "none";
     document.getElementById('fillBlank').style.display = "none";
-    document.getElementById('shortAnswer').style.display = "none";
     document.getElementById('selection').style.display = "block";
 }
 
@@ -81,9 +86,28 @@ function addingMultiChoice() {
 
 }
 
+function addMultipleChoice() {
+    var userInputs = document.getElementById('multi').getElementsByTagName('input');
+    allQuestions[allQuestions.length] = {
+        question: userInputs[0].value, type: userInputs[1].value, choice1: userInputs[2].value,
+        choice2: userInputs[3].value, choice2: userInputs[4].value, choice2: userInputs[5].value, questAnswer: userInputs[6].value
+    };
+    addQuestion();
+}
+
 function addingMultiAnswer() {
     document.getElementById('selection').style.display = "none";
     document.getElementById('multAns').style.display = "block";
+}
+
+function addMultipleAnswer() {
+    var userInputs = document.getElementById('multAns').getElementsByTagName('input');
+    allQuestions[allQuestions.length] = {
+        question: userInputs[0].value, type: userInputs[1].value, choice1: userInputs[2].value,
+        choice2: userInputs[3].value, choice2: userInputs[4].value, choice2: userInputs[5].value,
+        questAnswer: userInputs[6].value
+    };
+    addQuestion();
 }
 
 function addingTrueFalse() {
@@ -91,14 +115,26 @@ function addingTrueFalse() {
     document.getElementById('trueOrFalse').style.display = "block";
 }
 
+function addTrueFalse() {
+    var userInputs = document.getElementById('trueOrFalse').getElementsByTagName('input');
+    allQuestions[allQuestions.length] = {
+        question: userInputs[0].value, type: userInputs[1].value, choice1: "True",
+        choice2: "False", questAnswer: userInputs[2].value
+    };
+    addQuestion();
+}
+
 function addingFillBlank() {
     document.getElementById('selection').style.display = "none";
     document.getElementById('fillBlank').style.display = "block";
 }
 
-function addingShortAnswer() {
-    document.getElementById('selection').style.display = "none";
-    document.getElementById('shortAnswer').style.display = "block";
+function addFillBlank() {
+    var userInputs = document.getElementById('fillBlank').getElementsByTagName('input');
+    allQuestions[allQuestions.length] = {
+        question: userInputs[0].value, type: userInputs[1].value, questAnswer: userInputs[2].value
+    };
+    addQuestion();
 }
 
 function deleteQuestion() {
@@ -111,6 +147,7 @@ function updateQuestion() {
 
 function hideElements() {
     document.getElementById('finalResults').style.display = "none";
+    document.getElementById('nav').style.display = "none";
     document.getElementById('testNav').style.display = "none";
     document.getElementById('testingDiv').style.display = "none";
     document.getElementById('adminNav').style.display = "none";
@@ -119,14 +156,15 @@ function hideElements() {
     document.getElementById('multAns').style.display = "none";
     document.getElementById('trueOrFalse').style.display = "none";
     document.getElementById('fillBlank').style.display = "none";
-    document.getElementById('shortAnswer').style.display = "none";
-
+    document.getElementById('blankAnswer').style.display = "none";
+    
 }
 
 function hideAnswers() {
     document.getElementById('multipleChoice').style.display = "none";
     document.getElementById('multiAnswers').style.display = "none";
     document.getElementById('tF').style.display = "none";
+    document.getElementById('blankAnswer').style.display = "none";
 }
 
 function buildQuiz() {
@@ -134,6 +172,7 @@ function buildQuiz() {
     document.getElementById('questNum').innerHTML = questionNum;
     var multiChoice = document.getElementsByClassName('mChoices');
     question[0].innerHTML = allQuestions[counter].question;
+    document.getElementById('nav').style.display = "block";
     if (allQuestions[counter].type == 1) {
         document.getElementById('multipleChoice').style.display = "block";
         multiChoice[index].innerHTML = allQuestions[counter].choice1;
@@ -164,6 +203,7 @@ function submitAnswer() {
         showNextQuestion();
     }
     else if (questionType == 2) {
+        var multiAnswerArray = [];
         var formResults = document.getElementById('multiAnswers').getElementsByTagName('input');
         var valueResults = document.getElementById('multiAnswers').getElementsByTagName('h2');
         for (let i = 0; i < formResults.length; i++) {
@@ -174,17 +214,27 @@ function submitAnswer() {
         }
         for (let i = 0; i < indexArray.length; i++) {
             userAnswers[userAnswers.length] = valueResults[indexArray[i]].innerHTML;
-            showInstanceFeedback(valueResults[indexArray[i]].innerHTML, questionType);
+            multiAnswerArray[i] = valueResults[indexArray[i]].innerHTML;
         }
+        showInstanceFeedback(multiAnswerArray, questionType);
         showNextQuestion();
     }
     else if (questionType == 3) {
-
+        var formResults = document.getElementById('tF').getElementsByTagName('input');
+        var valueResults = document.getElementById('tF').getElementsByTagName('h2');
+        for (let i = 0; i < formResults.length; i++) {
+            if (formResults[i].checked == true) {
+                userAnswers[userAnswers.length] = valueResults[i].innerHTML;
+                showInstanceFeedback(valueResults[i].innerHTML, questionType);
+            }
+        }
+        showNextQuestion();
     }
-}
-
-function randomizeQuiz() {
-
+    else{
+        var formResults = document.getElementById('blankAnswer').getElementsByTagName('input');
+        userAnswers[userAnswers.length] = formResults[0].value;
+        showInstanceFeedback(formResults[0].value, questionType);
+    }
 }
 
 function showInstanceFeedback(results, type) {
@@ -202,9 +252,29 @@ function showInstanceFeedback(results, type) {
         }
     }
     else if (type == 2) {
-        if (allQuestions[counter].questAnswer[instanceIndex] == results) {
+        var right = 0;
+        var wrong = 0;
+        for (let i = 0; i < results.length; i++) {
+            if (allQuestions[counter].questAnswer[instanceIndex] == results[i]) {
+                instanceIndex++;
+                right++;
+            }
+            else {
+                incorrect++;
+                wrong++;
+                instResult[3].innerHTML = incorrect;
+                alert("incorrect");
+            }
+        }
+        if (wrong <= 0) {
             correct++;
-            instanceIndex++;
+            instResult[1].innerHTML = correct;
+            alert("correct");
+        }
+    }
+    else if (type == 3) {
+        if (allQuestions[counter].questAnswer == results) {
+            correct++;
             instResult[1].innerHTML = correct;
             alert("correct");
         }
@@ -214,17 +284,33 @@ function showInstanceFeedback(results, type) {
             alert("incorrect");
         }
     }
+    else{
+        if(allQuestions[counter].questAnswer == results){
+            correct++;
+            instResult[1].innerHTML = correct;
+            alert("correct");
+        }
+        else{
+            incorrect++;
+            instResult[3].innerHTML = incorrect;
+            alert("incorrect");
+        }
+    }
 }
 
 function showAllResults() {
-<<<<<<< HEAD
+    document.getElementById('nav').style.display = "none";
+    document.getElementById('progress').style.display = "none";
+    document.getElementById('question').style.display = "none";
+    document.getElementById('answers').style.display = "none";
     document.getElementById('finalResults').style.display = "block";
     var displayTags = document.getElementById('finalResults').getElementsByTagName('h3');
+    var paragraphTag = document.getElementById('answersGiven');
     displayTags[0].innerHTML = correct;
     displayTags[1].innerHTML = incorrect;
-=======
-     
->>>>>>> 13dcbe7a2d01655b6e6c8f3389b18912540c209e
+    for (let i = 0; i < userAnswers.length; i++) {
+        paragraphTag.innerHTML += (userAnswers[i] + ",");
+    }
 }
 
 function showFirstQuestion() {
@@ -280,6 +366,9 @@ function showNextQuestion() {
     else if (allQuestions[counter].type == 3) {
         document.getElementById('tF').style.display = "block";
     }
+    else{
+        document.getElementById('blankAnswer').style.display = "block";
+    }
 }
 
 function showPreviousQuestion() {
@@ -311,9 +400,5 @@ function showPreviousQuestion() {
         index++;
         multiAnswer[index].innerHTML = allQuestions[counter].choice4;
     }
-
-}
-
-function showStatusBar() {
 
 }
