@@ -77,6 +77,8 @@ function returnHome() {
 }
 
 function addQuestion() {
+    document.getElementById('deleteQuestion').style.display = "none";
+    document.getElementById('updateQuestion').style.display = "none";
     document.getElementById('multi').style.display = "none";
     document.getElementById('selection').style.display = "none";
     document.getElementById('multAns').style.display = "none";
@@ -143,6 +145,8 @@ function addFillBlank() {
 }
 
 function deleteQuestion() {
+    document.getElementById('updateQuestion').style.display = "none";
+    document.getElementById('selection').style.display = "none";
     document.getElementById('deleteQuestion').style.display = "block";
 
 }
@@ -157,6 +161,8 @@ function deleteHelper() {
 }
 
 function updateQuestion() {
+    document.getElementById('deleteQuestion').style.display = "none";
+    document.getElementById('selection').style.display = "none";
     document.getElementById('updateQuestion').style.display = "block";
 }
 
@@ -167,20 +173,6 @@ function updateHelper() {
         if (result[0].value - 1 == (i)) {
             typeOf = allQuestions[i].type;
         }
-    }
-    switch (typeOf) {
-        case 1:
-            var question = document.getElementById('question').getElementsByTagName('h2');
-            question[0].innerHTML = allQuestions[0].question;
-            var multiChoice = document.getElementsByClassName('mChoices');
-            document.getElementById('multipleChoice').style.display = "block";
-            multiChoice[index].innerHTML = allQuestions[counter].choice1;
-            index++;
-            multiChoice[index].innerHTML = allQuestions[counter].choice2;
-            index++;
-            multiChoice[index].innerHTML = allQuestions[counter].choice3;
-            index++;
-            multiChoice[index].innerHTML = allQuestions[counter].choice4;
     }
 }
 
@@ -439,6 +431,9 @@ function showPreviousQuestion() {
         multiAnswer[index].innerHTML = allQuestions[counter].choice3;
         index++;
         multiAnswer[index].innerHTML = allQuestions[counter].choice4;
+    }
+    else if (allQuestions[counter].type == 3) {
+        document.getElementById('tF').style.display = "block";
     }
 
 }

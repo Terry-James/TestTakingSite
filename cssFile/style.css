@@ -9,11 +9,20 @@ body{
     margin-right: auto;
 }
 
+#opener button{
+    width: 100px;
+    height: 25px;
+    margin-left: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px #000000
+}
+
 #opener h1{
-    font-size: 40pt;
+    font-size: 45pt;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: underline;
+    text-shadow: 2px 4px rgb(104, 90, 44);
 }
 
 .main{
@@ -88,6 +97,7 @@ li button{
     text-align: center;
     text-decoration: none;
     border-radius: 5px;
+    padding: 10px;
 }
 
 li button:hover {
@@ -101,8 +111,13 @@ li button:hover {
     
 }
 
+#selection h3{
+    margin-right: 20%;
+}
+
 #selection button{
     float: left;
+    margin-left: 20%;
 }
 
 #multi, #multAns, #trueOrFalse, #fillBlank, #shortAnswer{
@@ -125,4 +140,15 @@ li button:hover {
 
 #blankAnswer{
     margin: 30% 25%;
+}
+
+#deleteQuestion, #updateQuestion{
+    margin-top: 20%;
+    margin-left: 10%;
+}
+
+#finalResults{
+    border: 2px solid black;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
 }
